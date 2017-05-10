@@ -32,6 +32,13 @@ Plug 'Yggdroot/indentLine'
 Plug 'ervandew/supertab'
 Plug 'majutsushi/tagbar'
 Plug 'kien/rainbow_parentheses.vim'
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'SingleCompile'
+
+Plug 'tomtom/tlib_vim'
+Plug 'garbas/vim-snipmate'
+" Optional:
+Plug 'honza/vim-snippets'
 
 " 移动光标到插件名上, 使用'#'快速跳转到每个插件的配置处
 

@@ -25,8 +25,12 @@ let mapleader = ' '
 let g:mapleader = ' '
 
 nnoremap <Leader>o :CtrlP<CR>
-nnoremap <Leader>w :w<CR>
+
+" Quickly close the current window
 map q :q
+
+" Quickly save the current file
+ nnoremap <leader>w :w<CR>
 
 let Tlist_Show_One_File=1     "不同时显示多个文件的tag，只显示当前文件的    
 let Tlist_Exit_OnlyWindow=1   "如果taglist窗口是最后一个窗口，则退出vim   
@@ -577,11 +581,6 @@ nnoremap <C-y> 2<C-y>
 "nmap t o<ESC>k
 "nmap T O<ESC>j
 
-" Quickly close the current window
-" nnoremap <leader>q :q<CR>
-
-" Quickly save the current file
- nnoremap <leader>w :w<CR>
 
 " 交换 ' `, 使得可以快速使用'跳到marked位置
 nnoremap ' `
