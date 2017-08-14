@@ -1,19 +1,4 @@
 k-vim
-=======================
-
-**Note**: 9.1版本的文档/wiki等, 处理中(原先的常见问题FAQ/插件演示和使用/自定义快捷键等)
-
-当前进度30%
-
-----------------
-
-> VERSION: 9.1
-
-> LAST_UPDATE_TIME: 2015-12-15
-
-> 本次更新: 大版本更新, 众多细节优化
-
-详细 [更新日志](https://github.com/wklken/k-vim/wiki/UPDATE_LOG)
 
 # 目标
 
@@ -46,7 +31,7 @@ molokai主题
 ### 1. clone 到本地
 
 ```
-git clone https://github.com/wklken/k-vim.git
+git clone https://github.com/thouger/k-vim.git
 ```
 
 
@@ -58,7 +43,6 @@ git clone https://github.com/wklken/k-vim.git
 ```
 # ubuntu
 sudo apt-get install ctags
-sudo apt-get install build-essential cmake python-dev  #编译YCM自动补全插件依赖
 sudo apt-get install silversearcher-ag
 
 # centos
