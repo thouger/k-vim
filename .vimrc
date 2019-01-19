@@ -1,8 +1,4 @@
 "==========================================
-" Author:  wklken
-" Version: 9.1
-" Email: wklken@yeah.net
-" Last_modify: 2015-12-15
 " Sections:
 "       -> Initial Plugin 加载插件
 "       -> General Settings 基础设置
@@ -21,17 +17,26 @@
 "==========================================
 
 " 修改leader键
-let mapleader = ' '
-let g:mapleader = ' '
+let mapleader = '\<Space>'
+let g:mapleader = '\<Space>'
+
+" 开启语法高亮
+syntax on
+
+" install bundles
+source ~/.vimrc.bundles
+
+" ensure ftdetect et al work by including this after the bundle stuff
+filetype plugin indent on
 
 nnoremap <Leader>o :CtrlP<CR>
 nnoremap <Leader>w :w<CR>
 map q :q
 
-let Tlist_Show_One_File=1     "不同时显示多个文件的tag，只显示当前文件的    
-let Tlist_Exit_OnlyWindow=1   "如果taglist窗口是最后一个窗口，则退出vim   
+let Tlist_Show_One_File=1     "不同时显示多个文件的tag，只显示当前文件的
+let Tlist_Exit_OnlyWindow=1   "如果taglist窗口是最后一个窗口，则退出vim
 let Tlist_Use_Right_Window=1  "在右侧窗口中显示taglist窗口
-" let Tlist_Ctags_Cmd="/usr/bin/ctags" "将taglist与ctags关联  
+" let Tlist_Ctags_Cmd="/usr/bin/ctags" "将taglist与ctags关联
 
 "缩进指示线"
 let g:indentLine_char='┆'
@@ -39,35 +44,16 @@ let g:indentLine_enabled = 1
 
 "vim-airline"
 let g:airline_powerline_fonts = 1
-" 是否启用顶部tabline
+
+"是否启动顶部tabline"
 let g:airline#extensions#tabline#enabled = 1
+
 " 顶部tabline显示方式
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline_theme="jellybeans"
 
-"rainbow_parentheses.vim
-let g:rbpt_colorpairs = [ ['brown', 'RoyalBlue3'], ['Darkblue', 'SeaGreen3'], ['darkgray', 'DarkOrchid3'], ['darkgreen', 'firebrick3'],['darkcyan', 'RoyalBlue3'],['darkred', 'SeaGreen3'],['darkmagenta', 'DarkOrchid3'],['brown', 'firebrick3'],['gray', 'RoyalBlue3'],['black',       'SeaGreen3'],['darkmagenta', 'DarkOrchid3'],['Darkblue',  'firebrick3'],['darkgreen', 'RoyalBlue3'],['darkcyan', 'SeaGreen3'],['darkred', 'DarkOrchid3'],['red', 'firebrick3']]
-let g:rbpt_max = 16
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
-
 set modifiable
-
-" 开启语法高亮
-syntax on
-
-" install bundles
-if filereadable(expand("~/.vimrc.bundles"))
-  source ~/.vimrc.bundles
-elseif filereadable(expand("~/.config/nvim/vimrc.bundles")) " neovim
-  source ~/.config/nvim/vimrc.bundles
-endif
-
-" ensure ftdetect et al work by including this after the bundle stuff
-filetype plugin indent on
 
 " NOTE: 以下配置有详细说明，一些特性不喜欢可以直接注解掉
 
@@ -75,31 +61,30 @@ filetype plugin indent on
 " General Settings 基础设置
 "==========================================
 
-
 " history存储容量
 set history=2000
 
+" 改变vimx注释的颜色为绿色
+" hi comment ctermfg=2
+
 " 检测文件类型
 filetype on
+
 " 针对不同的文件类型采用不同的缩进格式
 filetype indent on
+
 " 允许插件
 filetype plugin on
+
 " 启动自动补全
 filetype plugin indent on
 
 " 文件修改之后自动载入
 set autoread
+
 " 启动的时候不显示那个援助乌干达儿童的提示
 set shortmess=atI
 
-" 备份,到另一个位置. 防止误删, 目前是取消备份
-set backup
-set backupext=.bak
-set backupdir=/tmp/vimbk/
-
-" 取消备份。 视情况自己改
-set nobackup
 " 关闭交换文件
 set noswapfile
 
@@ -119,10 +104,6 @@ set t_ti= t_te=
 
 " 鼠标暂不启用, 键盘党....
 set mouse-=a
-" 启用鼠标
-" set mouse=a
-" Hide the mouse cursor while typing
-" set mousehide
 
 
 " 修复ctrl+m 多光标操作选择的bug，但是改变了ctrl+v进行字符选中时将包含光标下的字符
@@ -131,6 +112,7 @@ set selectmode=mouse,key
 
 " change the terminal's title
 set title
+
 " 去掉输入错误的提示声音
 set novisualbell
 set noerrorbells
@@ -169,6 +151,7 @@ set laststatus=2
 
 " 显示行号
 set number
+
 " 取消换行
 set nowrap
 
@@ -245,6 +228,7 @@ set nrformats=
 set relativenumber number
 au FocusLost * :set norelativenumber number
 au FocusGained * :set relativenumber
+
 " 插入模式下用绝对行号, 普通模式下用相对
 autocmd InsertEnter * :set norelativenumber number
 autocmd InsertLeave * :set relativenumber
@@ -274,7 +258,7 @@ set encoding=utf-8
 " 自动判断编码时，依次尝试以下编码：
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 set helplang=cn
-"set langmenu=zh_CN.UTF-8
+"set langmenu=zh_CN.UTF-8
 "set enc=2byte-gb18030
 " 下面这句只影响普通模式 (非图形界面) 下的 Vim
 set termencoding=utf-8
@@ -358,7 +342,7 @@ nnoremap gj j
 " I can type :help on my own, thanks.  Protect your fat fingers from the evils of <F1>
 noremap <F1> <Esc>"
 
-" F3 行号开关，用于鼠标复制代码用
+" F2 行号开关，用于鼠标复制代码用
 " 为方便复制，用<F2>开启/关闭行号显示:
 function! HideNumber()
   if(&relativenumber == &number)
@@ -370,34 +354,19 @@ function! HideNumber()
   endif
   set number?
 endfunc
-nnoremap <F7> :call HideNumber()<CR>
+nnoremap <F2> :call HideNumber()<CR>
+
 " F3 显示可打印字符开关
 nnoremap <F3> :set list! list?<CR>
+
 " F4 换行开关
-" nnoremap <F4> :set wrap! wrap?<CR>
+nnoremap <F4> :set wrap! wrap?<CR>
 
-" F6 语法开关，关闭语法可以加快大文件的展示
-nnoremap <F6> :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
-
-set pastetoggle=<F4>            "    when in insert mode, press <F4> to go to
+set pastetoggle=<F5>            "    when in insert mode, press <F5> to go to
                                 "    paste mode, where you can paste mass data
                                 "    that won't be autoindented
-
-" disbale paste mode when leaving insert mode
-au InsertLeave * set nopaste
-
-"F2开启和关闭树"
-map <F2> :NERDTreeToggle<CR>
-let NERDTreeChDirMode=1
-"显示书签"
-let NERDTreeShowBookmarks=1
-"设置忽略文件类型"
-let NERDTreeIgnore=['\~$', '\.pyc$', '\.swp$']
-"窗口大小"
-let NERDTreeWinSize=25
-
-" F4 set paste问题已解决, 粘贴代码前不需要按F4了
-" F4 粘贴模式paste_mode开关,用于有格式的代码粘贴
+" F5 set paste问题已解决, 粘贴代码前不需要按F5了
+" F5 粘贴模式paste_mode开关,用于有格式的代码粘贴
 " Automatically set paste mode in Vim when pasting in insert mode
 function! XTermPasteBegin()
   set pastetoggle=<Esc>[201~
@@ -406,8 +375,25 @@ function! XTermPasteBegin()
 endfunction
 inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
 
+" F6 语法开关，关闭语法可以加快大文件的展示
+nnoremap <F6> :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
+
+"F7开启和关闭树"
+map <F7> :NERDTreeToggle<CR>
+
+" disbale paste mode when leaving insert mode
+au InsertLeave * set nopaste
+
+let NERDTreeChDirMode=1
+"显示书签"
+let NERDTreeShowBookmarks=1
+"设置忽略文件类型"
+let NERDTreeIgnore=['\~$', '\.pyc$', '\.swp$']
+"窗口大小"
+let NERDTreeWinSize=25
+
 "按F5运行python"
-map <F5> :call RunPython()<CR>
+map <F8> :call RunPython()<CR>
 function! RunPython()
   let mp = &makeprg
   let ef = &errorformat
@@ -637,47 +623,20 @@ function! AutoSetFileHead()
     normal o
 endfunc
 
-
-" 设置可以高亮的关键字
-if has("autocmd")
-  " Highlight TODO, FIXME, NOTE, etc.
-  if v:version > 701
-    autocmd Syntax * call matchadd('Todo',  '\W\zs\(TODO\|FIXME\|CHANGED\|DONE\|XXX\|BUG\|HACK\)')
-    autocmd Syntax * call matchadd('Debug', '\W\zs\(NOTE\|INFO\|IDEA\|NOTICE\)')
-  endif
-endif
-
 "==========================================
 " Theme Settings  主题设置
 "==========================================
 
-" Set extra options when running in GUI mode
-if has("gui_running")
-    set guifont=Monaco:h14
-    if has("gui_gtk2")   "GTK2
-        set guifont=Monaco\ 12,Monospace\ 12
-    endif
-    set guioptions-=T
-    set guioptions+=e
-    set guioptions-=r
-    set guioptions-=L
-    set guitablabel=%M\ %t
-    set showtabline=1
-    set linespace=2
-    set noimd
-    set t_Co=256
-endif
-
-
 
 " theme主题
+syntax enable
 set background=dark
-set t_Co=256
-
 colorscheme solarized
-" colorscheme molokai
-" colorscheme desert
-
+set t_Co=256
+let g:solarized_termcolors=256
+set guioptions-=T
+set guioptions-=e
+set guitablabel=%M\ %t
 
 " 设置标记一列的背景颜色和数字一行颜色一致
 hi! link SignColumn   LineNr
@@ -693,4 +652,3 @@ highlight clear SpellRare
 highlight SpellRare term=underline cterm=underline
 highlight clear SpellLocal
 highlight SpellLocal term=underline cterm=underline
-
